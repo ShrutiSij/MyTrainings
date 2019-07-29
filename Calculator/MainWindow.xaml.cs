@@ -108,8 +108,8 @@
 
         private void Point_Click(object sender, RoutedEventArgs e)
         {
-            string[] numbers = Regex.Split(MathematicalEquation.Content.ToString(), @"\D+");         
-            int number = int.Parse(numbers[numbers.Length - 1]);
+            string[] numbers = Regex.Split(MathematicalEquation.Content.ToString(), @"[^0-9\.]+");
+            double number = double.Parse(numbers[numbers.Length - 1]);
             if (!number.ToString().Contains("."))
             {
                 MathematicalEquation.Content = $"{MathematicalEquation.Content}.";
