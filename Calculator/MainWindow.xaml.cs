@@ -20,6 +20,7 @@
         public MainWindow()
         {
             InitializeComponent();
+            deleteBtn.Click += DeleteBtn_Click;
             SetFontSize();
         }
 
@@ -32,12 +33,12 @@
 
             if (selectedOperator == Operators.None)
             {
-                firstNumber = Convert.ToDouble(GetLastNumber());
+                firstNumber = GetLastNumber();
                 isCalculate = false;
             }
             else
             {
-                secondNumber = Convert.ToDouble(GetLastNumber());
+                secondNumber = GetLastNumber();
                 isCalculate = true;
             }
             SetFontSize();
@@ -120,11 +121,11 @@
             ResetCalculator();
         }
 
-        private string GetLastNumber()
+        private double GetLastNumber()
         {
             string[] numbers = Regex.Split(MathematicalEquation.Content.ToString(), @"[^0-9\.]+");
             //Regex.Split(MathematicalEquation.Content.ToString(), @"\D+");           
-            return numbers[numbers.Length - 1];
+            return Convert.ToDouble(numbers[numbers.Length - 1]);
         }
         private void ResetCalculator()
         {
@@ -153,25 +154,13 @@
             }
         }
 
-        private void NegativeBtn_Click(object sender, RoutedEventArgs e)
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(MathematicalEquation.Content.ToString(), out firstNumber))
-            {
-                MathematicalEquation.Content = (firstNumber * (-1)).ToString();
-            }
+            string content = MathematicalEquation.Content.ToString();
+            MathematicalEquation.Content = content.Remove(content.Length-1);
         }
 
-        private void Percentage_Click(object sender, RoutedEventArgs e)
-        {
-            double number;
-            if (double.TryParse(MathematicalEquation.Content.ToString(), out number))
-            {
-                number = (number / 100);
-                if (firstNumber != 0)
-                    number *= firstNumber;
-                MathematicalEquation.Content = number.ToString();
-            }
-        }
+        
         #endregion 
     }
 }

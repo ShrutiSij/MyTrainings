@@ -42,8 +42,8 @@
                 Margin="5"
                 Click="Ac_Click"
                 Grid.Row="2"/>
-        <Button x:Name="negativeBtn"
-                Content="+/-"
+        <Button x:Name="deleteBtn"
+                Content="Del"
                 Margin="5"
                 Grid.Row="2"
                 Grid.Column="1"/>
