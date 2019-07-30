@@ -14,7 +14,7 @@ namespace MyApp
         {
             SetData();
             InitializeComponent();
-            lstBox.ItemsSource = PersonList;
+           // lstBox.ItemsSource = PersonList;
         }
 
         private void SetData()

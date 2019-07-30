@@ -5,10 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="800">
+
+    <Window.Resources>
+        <x:Array x:Key="persons" Type="{x:Type local:Person}">
+            <local:Person FirstName="Ashutosh" LastName="Mor" Age="23" Hobby ="Football" ImgSrc="Z:\temp\MyTrainings\MyApp\boy.png"/>
+            <local:Person FirstName="Amol" LastName="Sijaria" Age="24" Hobby ="Cricket" ImgSrc="Z:\temp\MyTrainings\MyApp\boy.png" />
+            <local:Person FirstName="Niti" LastName="Nayak" Age="25" Hobby ="Reading" ImgSrc="Z:\temp\MyTrainings\MyApp\girl.png" />
+            <local:Person FirstName="Varsha" LastName="Jain" Age="26" Hobby ="Writing" ImgSrc="Z:\temp\MyTrainings\MyApp\girl.png" />            
+        </x:Array>
+    </Window.Resources>
+ 
     <Grid>
         <StackPanel>
-            <ListBox  Name = "lstBox" Margin="20"  ItemsSource="{Binding}" Height="700">
+            <ListBox  Name = "lstBox" Margin="20"  ItemsSource="{Binding Source={StaticResource persons}}" Height="700">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Width="300" Height="150"  Padding="8" Margin="20"
