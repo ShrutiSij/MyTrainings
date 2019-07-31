@@ -6,8 +6,8 @@ namespace WPFMVVMPersonList.ViewModels
 {
     public class PersonViewModel 
     {
-        public string boyImg = "/boy.png";
-        public string girlImg = "/girl.png";
+        public string boyImg = "/Resource/boy.png";
+        public string girlImg = "/Resource/girl.png";
         public List<PersonModel> PersonList = new List<PersonModel>();
         public List<PersonModel> Persons { get; set; }
        

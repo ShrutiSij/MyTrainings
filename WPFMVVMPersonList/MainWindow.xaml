@@ -37,7 +37,7 @@
                                     </TextBlock.Text>
                                 </TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"  Height="25"/>
-                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Persons.Age}"  Height="25"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Age}"  Height="25"/>
                                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Hobby:" Height="25"/>
                                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Hobby}" Height="25" />
                                 <TextBlock Grid.Row="3" Grid.Column="0" Text="Address:" Height="25"/>
