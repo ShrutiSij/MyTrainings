@@ -4,16 +4,17 @@ using WPFMVVMPersonList.Models;
 
 namespace WPFMVVMPersonList.ViewModels
 {
-    public class PersonViewModel 
+    public class PersonViewModel
     {
         public string boyImg = "/Resource/boy.png";
         public string girlImg = "/Resource/girl.png";
         public List<PersonModel> PersonList = new List<PersonModel>();
         public List<PersonModel> Persons { get; set; }
-       
+
         public PersonViewModel()
         {
             SetData();
+            Persons = PersonList;
         }
 
         private void SetData()
@@ -23,9 +24,8 @@ namespace WPFMVVMPersonList.ViewModels
                 FirstName = "Ashutosh",
                 LastName = "Mor",
                 Age = "23",
-                Hobby = "Football",
-                ImgSrc = boyImg,
-                Gender = Gender.Male,
+                Hobby = "Football",               
+                Gender = "Male",
                 Address = new Address
                 {
                     Country = "UK",
@@ -39,9 +39,8 @@ namespace WPFMVVMPersonList.ViewModels
                 FirstName = "Amol",
                 LastName = "Sijaria",
                 Age = "23",
-                Hobby = "Reading",
-                ImgSrc = boyImg,
-                Gender = Gender.Male,
+                Hobby = "Reading",               
+                Gender = "Male",
                 Address = new Address
                 {
                     Country = "UK",
@@ -55,9 +54,8 @@ namespace WPFMVVMPersonList.ViewModels
                 FirstName = "Shruti",
                 LastName = "Sijaria",
                 Age = "22",
-                Hobby = "Cricket",
-                ImgSrc = girlImg,
-                Gender = Gender.Female,
+                Hobby = "Cricket",                
+                Gender = "Female",
                 Address = new Address
                 {
                     Country = "UK",
@@ -72,8 +70,7 @@ namespace WPFMVVMPersonList.ViewModels
                 LastName = "Jain",
                 Age = "45",
                 Hobby = "Writing",
-                ImgSrc = girlImg,
-                Gender = Gender.Female,
+                Gender = "Female",
                 Address = new Address
                 {
                     Country = "UK",
@@ -88,8 +85,7 @@ namespace WPFMVVMPersonList.ViewModels
                 LastName = "Jain",
                 Age = "34",
                 Hobby = "Tennis",
-                ImgSrc = girlImg,
-                Gender = Gender.Female,
+                Gender = "Female",
                 Address = new Address
                 {
                     Country = "UK",
@@ -104,8 +100,7 @@ namespace WPFMVVMPersonList.ViewModels
                 LastName = "De",
                 Age = "34",
                 Hobby = "Badminton",
-                ImgSrc = boyImg,
-                Gender = Gender.Male,
+                Gender = "Male",
                 Address = new Address
                 {
                     Country = "UK",
@@ -119,9 +114,8 @@ namespace WPFMVVMPersonList.ViewModels
                 FirstName = "Peter",
                 LastName = "parker",
                 Age = "23",
-                Hobby = "Painting",
-                ImgSrc = boyImg,
-                Gender = Gender.Male,
+                Hobby = "Painting",               
+                Gender = "Male",
                 Address = new Address
                 {
                     Country = "UK",
@@ -130,8 +124,6 @@ namespace WPFMVVMPersonList.ViewModels
                     City = "Horsham"
                 }
             });
-
-            Persons = PersonList;
         }
     }
 }

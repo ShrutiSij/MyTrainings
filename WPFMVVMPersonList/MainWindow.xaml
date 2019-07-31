@@ -50,8 +50,22 @@
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
-                                <Image Grid.Column="8" Grid.RowSpan="3" Source="{Binding Path=ImgSrc}" Height="60"></Image>
-                            </Grid>
+                            <!--<Image Grid.Column="8" Grid.RowSpan="3" Source="{Binding Path=ImgSrc}" Height="60"></Image>-->
+                            <Image Tag="{Binding Gender}" Grid.Column="8" Grid.RowSpan="3" Height="60">
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Style.Triggers>
+                                            <DataTrigger  Binding="{Binding Gender}" Value="Male">
+                                                <Setter Property="Source" Value="/Resource/boy.png"/>
+                                            </DataTrigger >
+                                            <DataTrigger  Binding="{Binding Gender}" Value="Female">
+                                                <Setter Property="Source" Value="/Resource/girl.png"/>
+                                            </DataTrigger >
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Grid>
                         </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
