@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using WPFMVVMPersonList.Models;
 namespace WPFMVVMPersonList.MockData
 {
     public class MockPersonData
     {
-        public static List<PersonModel> GetPersonData()
+        public static ObservableCollection<PersonModel> GetPersonData()
         {
-            List<PersonModel> personList = new List<PersonModel>();
+            ObservableCollection<PersonModel> personList = new ObservableCollection<PersonModel>();
             personList.Add(new PersonModel
             {
                 FirstName = "Ashutosh",
