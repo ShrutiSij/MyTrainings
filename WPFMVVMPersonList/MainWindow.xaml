@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFMVVMPersonList.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" >
     <Window.DataContext>
         <local:PersonViewModel/>
     </Window.DataContext>
     <WrapPanel>
-        
+
         <StackPanel>
             <TextBlock  Text="Friends" FontSize="30" Width="98"/>
 
             <Image  Source="/Resource/friend.jpg" Height="120"></Image>
-            
+
             <ListBox  Name = "friendlstBox" Height="700" ItemsSource="{Binding Friends}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -83,65 +83,93 @@
             <Image  Source="/Resource/enemy.jpg" Height="120">
             </Image>
             <ListBox  Name = "enemylstBox" Height="700" ItemsSource="{Binding Enemies}" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border Height="220"  Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
-                        <StackPanel>
-                            <WrapPanel>
-                                <Image Tag="{Binding Gender}" Height="72"  HorizontalAlignment="Center" Margin="50,5,20,10">
-                                    <Image.Style>
-                                        <Style TargetType="{x:Type Image}">
-                                            <Style.Triggers>
-                                                <DataTrigger  Binding="{Binding Gender}" Value="Male">
-                                                    <Setter Property="Source" Value="/Resource/boy.png"/>
-                                                </DataTrigger>
-                                                <DataTrigger  Binding="{Binding Gender}" Value="Female">
-                                                    <Setter Property="Source" Value="/Resource/girl.png"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Image.Style>
-                                </Image>
-                                <!--<Image Grid.Column="8" Grid.RowSpan="3" Source="{Binding Path=ImgSrc}" Height="60"></Image>-->
-                            </WrapPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Height="220"  Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
+                            <StackPanel>
+                                <WrapPanel>
+                                    <Image Tag="{Binding Gender}" Height="72"  HorizontalAlignment="Center" Margin="50,5,20,10">
+                                        <Image.Style>
+                                            <Style TargetType="{x:Type Image}">
+                                                <Style.Triggers>
+                                                    <DataTrigger  Binding="{Binding Gender}" Value="Male">
+                                                        <Setter Property="Source" Value="/Resource/boy.png"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger  Binding="{Binding Gender}" Value="Female">
+                                                        <Setter Property="Source" Value="/Resource/girl.png"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                    <!--<Image Grid.Column="8" Grid.RowSpan="3" Source="{Binding Path=ImgSrc}" Height="60"></Image>-->
+                                </WrapPanel>
 
-                            <WrapPanel>
-                                <TextBlock  Text="Name:" Height="25" Width="53"/>
-                                <TextBlock  Height="25" Width="119">
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat=" {0} {1}">
-                                            <Binding Path="FirstName"/>
-                                            <Binding Path="LastName"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                            </WrapPanel>
-                            <WrapPanel>
-                                <TextBlock  Text="Age:"  Height="25" Width="53"/>
-                                <TextBlock  Text="{Binding Path=Age}"  Height="25"/>
-                            </WrapPanel>
-                            <WrapPanel>
-                                <TextBlock  Text="Hobby:" Height="25" Width="53"/>
-                                <TextBlock  Text="{Binding Path=Hobby}" Height="25" />
-                            </WrapPanel>
-                            <WrapPanel>
-                                <TextBlock  Width="50" Text="Address:" Height="25"/>
-                                <TextBlock  TextWrapping="WrapWithOverflow" Width="182" >
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat=" {0} {1} {2} {3}">
-                                            <Binding Path="Address.PinCode"/>
-                                            <Binding Path="Address.Street"/>
-                                            <Binding Path="Address.City"/>
-                                            <Binding Path="Address.Country"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                            </WrapPanel>
-                        </StackPanel>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                                <WrapPanel>
+                                    <TextBlock  Text="Name:" Height="25" Width="53"/>
+                                    <TextBlock  Height="25" Width="119">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat=" {0} {1}">
+                                                <Binding Path="FirstName"/>
+                                                <Binding Path="LastName"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </WrapPanel>
+                                <WrapPanel>
+                                    <TextBlock  Text="Age:"  Height="25" Width="53"/>
+                                    <TextBlock  Text="{Binding Path=Age}"  Height="25"/>
+                                </WrapPanel>
+                                <WrapPanel>
+                                    <TextBlock  Text="Hobby:" Height="25" Width="53"/>
+                                    <TextBlock  Text="{Binding Path=Hobby}" Height="25" />
+                                </WrapPanel>
+                                <WrapPanel>
+                                    <TextBlock  Width="50" Text="Address:" Height="25"/>
+                                    <TextBlock  TextWrapping="WrapWithOverflow" Width="182" >
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat=" {0} {1} {2} {3}">
+                                                <Binding Path="Address.PinCode"/>
+                                                <Binding Path="Address.Street"/>
+                                                <Binding Path="Address.City"/>
+                                                <Binding Path="Address.Country"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </WrapPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <StackPanel Margin="100">
+            <TextBlock  Text="Add Friend/Enemy" FontSize="30" Width="300"/>
+            <Border Height="235"   Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1" Width="282">
+                <StackPanel>
+                    <WrapPanel>
+                        <TextBlock  Text="Name:" Height="25" Width="53"/>
+                        <TextBox  Margin="10" Height="25" Width="119"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <TextBlock  Text="Age:"  Height="25" Width="53"/>
+                        <TextBox  Margin="10" Text="{Binding Path=Age}" Width="119"  Height="25"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <TextBlock  Text="Hobby:" Height="25" Width="53"/>
+                        <TextBox  Margin="10" Text="{Binding Path=Hobby}"  Width="119" Height="25" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <TextBlock  Width="53" Text="Address:" Height="25"/>
+                        <TextBox  Margin="10" TextWrapping="WrapWithOverflow" Height="25" Width="119"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <CheckBox  Margin="30,10,0,10" Width="67" Height="25" Content="IsEnemy"/>
+                        <Button  Margin="30,10,0,10" Width="53" Height="25" Content="Add"/>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </WrapPanel>
 </Window>

@@ -26,7 +26,7 @@ namespace WPFMVVMPersonList.ViewModels
         }
 
         public ObservableCollection<PersonModel> Friends
-       {
+        {
             get
             {
                 return _friends;
@@ -51,10 +51,6 @@ namespace WPFMVVMPersonList.ViewModels
             }
         }
         public PersonViewModel()
-        {
-            SetData();
-        }
-        private void SetData()
         {
             Friends = MockPersonData.GetPersonData();
             Enemies = MockPersonData.GetPersonData();
