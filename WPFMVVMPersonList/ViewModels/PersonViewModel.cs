@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using WPFMVVMPersonList.Commands;
+using System.Windows;
 
 namespace WPFMVVMPersonList.ViewModels
 {
@@ -66,9 +67,16 @@ namespace WPFMVVMPersonList.ViewModels
             p.Address = NewPerson.Address;
             p.Hobby = NewPerson.Hobby;
             if (NewPerson.IsEnemy)
+            {
                 Enemies.Add(p);
+                MessageBox.Show("Enemy is added to list.", "Information");
+            }
             else
+            {
                 Friends.Add(p);
+                MessageBox.Show("Friend is added to list.", "Information");
+            }
+
             NewPerson = new Person();
         }
     }
