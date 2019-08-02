@@ -8,23 +8,29 @@ using WPFMVVMPersonList.ViewModels;
 
 namespace WPFMVVMPersonList.Commands
 {
-    public class AddCommand : ICommand
+    public class DeleteCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private PersonViewModel _personViewModel;
-
-        public AddCommand(PersonViewModel PersonViewModel)
+        private int selectedindex;
+        private bool _isenemy;
+        public DeleteCommand(PersonViewModel PersonViewModel, bool isEnemy)
         {
             _personViewModel = PersonViewModel;
+            _isenemy = isEnemy;
         }
         public bool CanExecute(object parameter)
         {
+            selectedindex = parameter != null ? (int)parameter : 0;
             return true;
         }
 
         public void Execute(object parameter)
         {
-            _personViewModel.Add();
+             if (_isenemy)
+            _personViewModel.DeleteEnemy(selectedindex);
+             else
+            _personViewModel.DeleteFriend(selectedindex);
         }
     }
 }

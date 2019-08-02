@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFMVVMPersonList.Commands;
 
 namespace WPFMVVMPersonList.Models
 {
@@ -15,6 +16,9 @@ namespace WPFMVVMPersonList.Models
         private string _address;
         private string _gender;
         private bool _isEnemy;
+        public DeleteCommand DeleteCommand { get; set; }
+        public DeleteCommand DeleteFriendCommand { get; set; }
+        public int ID { get; set; }
         public List<string> GenderList { get; set; }
         public string FirstName
         {

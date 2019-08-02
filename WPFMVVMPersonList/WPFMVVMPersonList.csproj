@@ -55,7 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\ADDCommand.cs" />
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\DeleteCommand.cs" />
     <Compile Include="MockData\MockPersonData.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Person.cs" />

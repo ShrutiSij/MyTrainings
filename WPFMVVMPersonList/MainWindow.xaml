@@ -16,10 +16,10 @@
 
             <Image  Source="/Resource/friend.jpg" Height="120"></Image>
 
-            <ListBox Margin="20,0,0,0" Width="280" Name = "friendlstBox" Height="700" ItemsSource="{Binding Friends}" >
+            <ListBox Margin="20,0,0,0" Width="280"  SelectedItem="{Binding Path=SelectedPerson, Mode=TwoWay}" Name = "friendlstBox" Height="700" ItemsSource="{Binding Friends}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border Height="220"   Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
+                        <Border Height="250"   Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
                             <StackPanel>
                                 <WrapPanel>
                                     <Image Tag="{Binding Gender}" Height="72"  HorizontalAlignment="Center" Margin="50,5,20,10">
@@ -60,16 +60,10 @@
                                 </WrapPanel>
                                 <WrapPanel>
                                     <TextBlock  Width="50" Text="Address:" Height="25"/>
-                                    <TextBlock  TextWrapping="WrapWithOverflow" Width="182" >
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat=" {0} {1} {2} {3}">
-                                                <Binding Path="Address.PinCode"/>
-                                                <Binding Path="Address.Street"/>
-                                                <Binding Path="Address.City"/>
-                                                <Binding Path="Address.Country"/>
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
+                                    <TextBlock  TextWrapping="WrapWithOverflow" Text="{Binding Path=Address}"  Width="182" />
+                                </WrapPanel>
+                                <WrapPanel>
+                                    <Button   Command="{Binding DeleteFriendCommand}" CommandParameter="{Binding ID}" Margin="30,10,0,10" Width="53" Height="25" Content="Delete"/>
                                 </WrapPanel>
                             </StackPanel>
                         </Border>
@@ -82,10 +76,10 @@
             <TextBlock  Text="Enemies" FontSize="30" Width="108"  />
             <Image  Source="/Resource/enemy.jpg" Height="120">
             </Image>
-            <ListBox   Width="280" Name = "enemylstBox" Margin="25,0,0,0" Height="700" ItemsSource="{Binding Enemies}" >
+            <ListBox   SelectedItem="{Binding Path=SelectedPerson, Mode=TwoWay}"  Width="280" Name = "enemylstBox" Margin="25,0,0,0" Height="700" ItemsSource="{Binding Enemies}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border Height="220"  Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
+                        <Border Height="250"  Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
                             <StackPanel>
                                 <WrapPanel>
                                     <Image Tag="{Binding Gender}" Height="72"  HorizontalAlignment="Center" Margin="50,5,20,10">
@@ -126,20 +120,16 @@
                                 </WrapPanel>
                                 <WrapPanel>
                                     <TextBlock  Width="50" Text="Address:" Height="25"/>
-                                    <TextBlock  TextWrapping="WrapWithOverflow" Width="182" >
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat=" {0} {1} {2} {3}">
-                                                <Binding Path="Address.PinCode"/>
-                                                <Binding Path="Address.Street"/>
-                                                <Binding Path="Address.City"/>
-                                                <Binding Path="Address.Country"/>
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
+                                    <TextBlock  Text="{Binding Path=Address}" TextWrapping="WrapWithOverflow" Width="182"/>
+
+                                </WrapPanel>
+                                <WrapPanel>
+                                    <Button   Command="{Binding DeleteCommand}" CommandParameter="{Binding ID}" Margin="30,10,0,10" Width="53" Height="25" Content="Delete"/>
                                 </WrapPanel>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
+                    
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
@@ -171,7 +161,7 @@
                     <WrapPanel>
                        
                         <CheckBox   IsChecked="{Binding Path=NewPerson.IsEnemy}" Name ="IsEnemychk"  Margin="30,10,0,10" Width="67" Height="25" Content="IsEnemy"/>
-                        <Button   Command="{Binding ADDCommand}"  Margin="30,10,0,10" Width="53" Height="25" Content="Add"/>
+                        <Button   Command="{Binding AddCommand}"  Margin="30,10,0,10" Width="53" Height="25" Content="Add"/>
                     </WrapPanel>
                 </StackPanel>
             </Border>
