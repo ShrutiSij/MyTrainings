@@ -16,7 +16,7 @@
 
             <Image  Source="/Resource/friend.jpg" Height="120"></Image>
 
-            <ListBox  Name = "friendlstBox" Height="700" ItemsSource="{Binding Friends}" >
+            <ListBox Margin="20,0,0,0" Width="280" Name = "friendlstBox" Height="700" ItemsSource="{Binding Friends}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Height="220"   Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
@@ -82,7 +82,7 @@
             <TextBlock  Text="Enemies" FontSize="30" Width="108"  />
             <Image  Source="/Resource/enemy.jpg" Height="120">
             </Image>
-            <ListBox  Name = "enemylstBox" Height="700" ItemsSource="{Binding Enemies}" >
+            <ListBox   Width="280" Name = "enemylstBox" Margin="25,0,0,0" Height="700" ItemsSource="{Binding Enemies}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Height="220"  Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1">
@@ -144,29 +144,34 @@
             </ListBox>
         </StackPanel>
 
-        <StackPanel Margin="100">
+        <StackPanel Margin="100, 200,0, 170">
             <TextBlock  Text="Add Friend/Enemy" FontSize="30" Width="300"/>
-            <Border Height="235"   Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1" Width="282">
+            <Border Height="300"   Padding="8" Margin="5" BorderBrush="Aqua" BorderThickness="1" Width="282">
                 <StackPanel>
                     <WrapPanel>
                         <TextBlock  Text="Name:" Height="25" Width="53"/>
-                        <TextBox  Margin="10" Height="25" Width="119"/>
+                        <TextBox  Margin="10" Text="{Binding Path=NewPerson.FirstName}" Height="25" Width="119"/>
                     </WrapPanel>
                     <WrapPanel>
                         <TextBlock  Text="Age:"  Height="25" Width="53"/>
-                        <TextBox  Margin="10" Text="{Binding Path=Age}" Width="119"  Height="25"/>
+                        <TextBox  Margin="10" Text="{Binding Path=NewPerson.Age}" Width="119"  Height="25"/>
                     </WrapPanel>
                     <WrapPanel>
                         <TextBlock  Text="Hobby:" Height="25" Width="53"/>
-                        <TextBox  Margin="10" Text="{Binding Path=Hobby}"  Width="119" Height="25" />
+                        <TextBox  Margin="10" Text="{Binding Path=NewPerson.Hobby}"  Width="119" Height="25" />
                     </WrapPanel>
                     <WrapPanel>
                         <TextBlock  Width="53" Text="Address:" Height="25"/>
-                        <TextBox  Margin="10" TextWrapping="WrapWithOverflow" Height="25" Width="119"/>
+                        <TextBox  Margin="10" TextWrapping="WrapWithOverflow"  Text="{Binding Path=NewPerson.Address}" Height="25" Width="119"/>
                     </WrapPanel>
                     <WrapPanel>
-                        <CheckBox  Margin="30,10,0,10" Width="67" Height="25" Content="IsEnemy"/>
-                        <Button  Margin="30,10,0,10" Width="53" Height="25" Content="Add"/>
+                        <TextBlock  Width="53" Text="Gender:" Height="25"/>
+                        <ComboBox  Margin="10" ItemsSource="{Binding Path=NewPerson.GenderList}"  SelectedItem="{Binding Path=NewPerson.Gender}" Height="25" Width="119"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                       
+                        <CheckBox   IsChecked="{Binding Path=NewPerson.IsEnemy}" Name ="IsEnemychk"  Margin="30,10,0,10" Width="67" Height="25" Content="IsEnemy"/>
+                        <Button   Command="{Binding ADDCommand}"  Margin="30,10,0,10" Width="53" Height="25" Content="Add"/>
                     </WrapPanel>
                 </StackPanel>
             </Border>

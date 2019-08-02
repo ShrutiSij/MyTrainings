@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using WPFMVVMPersonList.Models;
-using WPFMVVMPersonList.MockData;
+﻿using WPFMVVMPersonList.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using WPFMVVMPersonList.Commands;
 
 namespace WPFMVVMPersonList.ViewModels
 {
     public class PersonViewModel : BaseModel, INotifyPropertyChanged
     {
-        private PersonModel _person;
-        private ObservableCollection<PersonModel> _friends;
-        public ObservableCollection<PersonModel> _enemies;
+        private Person _person;
+        private ObservableCollection<Person> _friends;
+        public ObservableCollection<Person> _enemies;
 
-        public PersonModel Person
+        public Person NewPerson
         {
             get
             {
@@ -21,11 +20,12 @@ namespace WPFMVVMPersonList.ViewModels
             set
             {
                 _person = value;
-                NotifyPropertyChanged("Person");
+                NotifyPropertyChanged("NewPerson");
             }
         }
+        public ADDCommand ADDCommand { get; set; }
 
-        public ObservableCollection<PersonModel> Friends
+        public ObservableCollection<Person> Friends
         {
             get
             {
@@ -38,7 +38,7 @@ namespace WPFMVVMPersonList.ViewModels
             }
         }
 
-        public ObservableCollection<PersonModel> Enemies
+        public ObservableCollection<Person> Enemies
         {
             get
             {
@@ -52,8 +52,24 @@ namespace WPFMVVMPersonList.ViewModels
         }
         public PersonViewModel()
         {
-            Friends = MockPersonData.GetPersonData();
-            Enemies = MockPersonData.GetPersonData();
+            NewPerson = new Person();
+            Friends = new ObservableCollection<Person>();
+            Enemies = new ObservableCollection<Person>();
+            this.ADDCommand = new ADDCommand(this);
+        }
+        public void GetPersonData()
+        {
+            Person p = new Person();
+            p.FirstName = NewPerson.FirstName;
+            p.Age = NewPerson.Age;
+            p.Gender = NewPerson.Gender;
+            p.Address = NewPerson.Address;
+            p.Hobby = NewPerson.Hobby;
+            if (NewPerson.IsEnemy)
+                Enemies.Add(p);
+            else
+                Friends.Add(p);
+            NewPerson = new Person();
         }
     }
 }

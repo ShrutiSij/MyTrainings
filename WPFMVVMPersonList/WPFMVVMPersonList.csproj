@@ -55,8 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ADDCommand.cs" />
     <Compile Include="MockData\MockPersonData.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
